@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نبتة | متجر النباتات</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Amiri:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-900:#1b4332; --green-700:#2d6a4f; --green-500:#40916c;
+  --green-300:#95d5b2; --green-100:#d8f3dc; --cream:#f6f4ec;
+  --gold:#d4a373; --ink:#1a202c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+.bg-scene{position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse 80% 60% at 70% -10%, #b7e4c7 0%, transparent 60%),radial-gradient(ellipse 60% 50% at 10% 100%, #d8f3dc 0%, transparent 55%),linear-gradient(160deg,#f6f4ec 0%,#eef7ee 45%,#e2f0e4 100%)}
+.leaf{position:fixed;z-index:-1;font-size:2rem;opacity:.35;animation:float linear infinite;pointer-events:none;filter:blur(.3px)}
+@keyframes float{0%{transform:translateY(110vh) rotate(0deg);opacity:0}10%{opacity:.35}90%{opacity:.3}100%{transform:translateY(-15vh) rotate(340deg);opacity:0}}
+.bg-veins{position:fixed;inset:0;z-index:-2;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cpath d='M100 10 Q150 80 100 190 Q50 80 100 10' fill='none' stroke='%232d6a4f' stroke-width='2'/%3E%3Cpath d='M100 40 L140 70 M100 70 L60 100 M100 100 L145 130 M100 130 L55 160' stroke='%232d6a4f' stroke-width='1.5'/%3E%3C/svg%3E")}
+header{position:sticky;top:0;z-index:50;background:rgba(246,244,236,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--green-100)}
+.nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.5rem}
+.logo{font-family:'Amiri',serif;font-size:2rem;color:var(--green-700);display:flex;align-items:center;gap:.4rem}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink);font-weight:500;transition:.3s}
+.nav-links a:hover{color:var(--green-500)}
+.admin-btn{background:var(--green-700);color:#fff!important;padding:.5rem 1.2rem;border-radius:30px}
+.admin-btn:hover{background:var(--green-900)}
+.hero{max-width:1200px;margin:auto;padding:5rem 1.5rem 3rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+.hero h1{font-size:3.4rem;line-height:1.25;color:var(--green-900)}
+.hero h1 em{font-style:normal;color:var(--green-500);position:relative}
+.hero h1 em::after{content:"";position:absolute;bottom:4px;right:0;width:100%;height:10px;background:var(--green-300);z-index:-1;border-radius:4px;opacity:.6}
+.hero p{margin:1.2rem 0 2rem;font-size:1.15rem;color:#4a5568;line-height:1.9}
+.cta{display:inline-block;background:var(--green-700);color:#fff;text-decoration:none;padding:.9rem 2.4rem;border-radius:40px;font-weight:700;font-size:1.05rem;box-shadow:0 8px 20px rgba(45,106,79,.35);transition:.3s}
+.cta:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(45,106,79,.45)}
+.hero-art{text-align:center}
+.hero-art .pot{font-size:9rem;animation:sway 4s ease-in-out infinite;transform-origin:bottom center;display:inline-block}
+@keyframes sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.badge{display:inline-block;background:var(--green-100);color:var(--green-700);padding:.35rem 1rem;border-radius:30px;font-weight:700;font-size:.9rem;margin-bottom:1rem}
+section{max-width:1200px;margin:auto;padding:3.5rem 1.5rem}
+.sec-title{text-align:center;font-size:2.2rem;color:var(--green-900);margin-bottom:.5rem}
+.sec-sub{text-align:center;color:#718096;margin-bottom:2.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.8rem}
+.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 6px 18px rgba(27,67,50,.08);transition:.35s;border:1px solid #eef2ec}
+.card:hover{transform:translateY(-8px);box-shadow:0 18px 36px rgba(27,67,50,.15)}
+.card-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:5.5rem;background:linear-gradient(145deg,var(--green-100),#f0faf1);position:relative}
+.card-img img{width:100%;height:100%;object-fit:cover}
+.card-body{padding:1.2rem 1.3rem 1.4rem}
+.card-body h3{color:var(--green-900);font-size:1.15rem;margin-bottom:.3rem}
+.card-body .desc{font-size:.88rem;color:#718096;margin-bottom:.9rem;min-height:2.5em}
+.card-foot{display:flex;justify-content:space-between;align-items:center}
+.price{font-size:1.3rem;font-weight:800;color:var(--green-500)}
+.price small{font-size:.75rem;font-weight:500;color:#a0aec0}
+.order-btn{background:var(--green-100);color:var(--green-700);border:none;padding:.5rem 1.1rem;border-radius:25px;font-family:inherit;font-weight:700;cursor:pointer;transition:.3s}
+.order-btn:hover{background:var(--green-700);color:#fff}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1rem}
+.feat{background:rgba(255,255,255,.7);border:1px solid var(--green-100);border-radius:18px;padding:1.6rem;text-align:center}
+.feat .ico{font-size:2.4rem;margin-bottom:.7rem}
+.feat h3{color:var(--green-800);margin-bottom:.4rem;font-size:1.05rem}
+.feat p{font-size:.88rem;color:#718096}
+footer{background:var(--green-900);color:#cfe8d8;margin-top:3rem}
+.foot-inner{max-width:1200px;margin:auto;padding:2.5rem 1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem}
+footer .logo{color:#fff;font-size:1.6rem}
+footer p{font-size:.9rem;opacity:.8;max-width:340px;line-height:1.8}
+.foot-bottom{text-align:center;padding:1rem;border-top:1px solid rgba(255,255,255,.12);font-size:.85rem;opacity:.7}
+.modal{position:fixed;inset:0;background:rgba(15,30,22,.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:1rem}
+.modal.open{display:flex}
+.modal-box{background:#fff;border-radius:24px;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;padding:2rem;position:relative;animation:pop .3s ease}
+@keyframes pop{from{transform:scale(.92);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-box h2{color:var(--green-800);margin-bottom:1.3rem;display:flex;align-items:center;gap:.5rem}
+.close-x{position:absolute;top:1rem;left:1rem;background:var(--green-100);border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;color:var(--green-700)}
+.field{margin-bottom:1rem}
+.field label{display:block;font-weight:700;font-size:.9rem;margin-bottom:.4rem;color:var(--green-900)}
+.field input,.field textarea{width:100%;padding:.7rem 1rem;border:1.5px solid var(--green-100);border-radius:12px;font-family:inherit;font-size:.95rem;background:#fbfdfb}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--green-500)}
+.save-btn{width:100%;background:var(--green-700);color:#fff;border:none;padding:.9rem;border-radius:14px;font-family:inherit;font-weight:800;font-size:1rem;cursor:pointer;transition:.3s}
+.save-btn:hover{background:var(--green-900)}
+.login-hint{background:#fff8e6;border:1px solid #f0dfae;color:#8a6d1a;padding:.7rem 1rem;border-radius:12px;font-size:.85rem;margin-bottom:1rem;text-align:center}
+.admin-item{display:flex;align-items:center;gap:.8rem;background:#f7faf7;border:1px solid var(--green-100);border-radius:14px;padding:.7rem .9rem;margin-bottom:.6rem}
+.admin-item .thumb{font-size:1.8rem;width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:10px;overflow:hidden;flex-shrink:0}
+.admin-item .thumb img{width:100%;height:100%;object-fit:cover}
+.admin-item .info{flex:1;min-width:0}
+.admin-item .info b{font-size:.92rem;color:var(--green-900);display:block}
+.admin-item .info span{font-size:.8rem;color:var(--green-500);font-weight:700}
+.mini-btn{border:none;background:none;cursor:pointer;font-size:1rem;padding:.3rem;border-radius:8px}
+.edit{background:var(--green-100)} .del{background:#fde8e8}
+.add-btn{width:100%;margin-top:.8rem;background:var(--green-100);color:var(--green-700);border:2px dashed var(--green-300);padding:.8rem;border-radius:14px;font-family:inherit;font-weight:800;cursor:pointer;font-size:.95rem}
+.tabs{display:flex;gap:.5rem;margin-bottom:1.2rem}
+.tab{flex:1;padding:.6rem;border-radius:12px;border:none;background:var(--green-100);color:var(--green-700);font-family:inherit;font-weight:700;cursor:pointer}
+.tab.active{background:var(--green-700);color:#fff}
+.burger{display:none;background:none;border:none;font-size:1.6rem;color:var(--green-700);cursor:pointer}
+.mobile-menu{display:none;flex-direction:column;background:rgba(246,244,236,.98);border-bottom:1px solid var(--green-100);padding:.5rem 1.5rem 1rem;gap:.2rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{text-decoration:none;color:var(--ink);font-weight:600;padding:.7rem .3rem;border-bottom:1px solid var(--green-100)}
+@media(max-width:850px){.hero{grid-template-columns:1fr;text-align:center;padding-top:3rem}.hero p{margin-inline:auto}.nav-links{display:none}.burger{display:block}.hero h1{font-size:2.3rem}.card-img{height:170px;font-size:4.2rem}.hero-art .pot{font-size:6rem}}
+.toast{position:fixed;bottom:1.5rem;right:50%;transform:translateX(50%);background:var(--green-900);color:#fff;padding:.8rem 1.6rem;border-radius:30px;z-index:200;opacity:0;transition:.4s;pointer-events:none}
+.toast.show{opacity:1;bottom:2.5rem}
+</style>
+</head>
+<body>
+<div class="bg-scene"></div><div class="bg-veins"></div>
+<header>
+<nav class="nav">
+<div class="logo">🌿 نبتـ<span>ـة</span></div>
+<ul class="nav-links">
+<li><a href="#home">الرئيسية</a></li><li><a href="#plants">نباتاتنا</a></li><li><a href="#features">لماذا نحن؟</a></li><li><a href="#" class="admin-btn" onclick="openAdmin(event)">لوحة التحكم</a></li>
+</ul>
+<a href="#" class="admin-btn" style="font-size:.85rem" onclick="openAdmin(event)">⚙️ الإدارة</a>
+<button class="burger" onclick="toggleMenu()" aria-label="القائمة">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#home" onclick="toggleMenu()">الرئيسية</a><a href="#plants" onclick="toggleMenu()">نباتاتنا</a><a href="#features" onclick="toggleMenu()">لماذا نحن؟</a><a href="#" onclick="openAdmin(event);toggleMenu()">🔐 لوحة التحكم</a>
+</div>
+</header>
+<div class="hero" id="home">
+<div><span class="badge">🌱 توصيل سريع لباب منزلك</span><h1>أحضِر <em>الحياة الخضراء</em><br>إلى مساحتك مع نبتة</h1><p>نختار لك أجمل النباتات المنزلية والمكتبية بعناية فائقة، من أوراقٍ استوائية إلى صبارات أنيقة، مع نصائح عناية مخصّصة لكل نبتة.</p><a href="#plants" class="cta">تصفّح النباتات 🌿</a></div>
+<div class="hero-art"><span class="pot">🪴</span></div>
+</div>
+<section id="plants"><h2 class="sec-title">نباتاتنا المميزة</h2><p class="sec-sub">تشكيلة مختارة بعناية تناسب كل ركن في منزلك</p><div class="grid" id="productsGrid"></div></section>
+<section id="features"><h2 class="sec-title">لماذا يختارنا عملاؤنا؟</h2><p class="sec-sub">لأن كل نبتة تستحق عناية استثنائية</p>
+<div class="features">
+<div class="feat"><div class="ico">🚚</div><h3>توصيل سريع وآمن</h3><p>نوصّل نباتاتك بحماية كاملة حتى تصل بحالة مثالية.</p></div>
+<div class="feat"><div class="ico">💚</div><h3>صحة مضمونة</h3><p>كل نبتة تُفحص وتُعقّم قبل الشحن مع ضمان استبدال.</p></div>
+<div class="feat"><div class="ico">📋</div><h3>دليل عناية</h3><p>نرسل مع كل طلب بطاقة عناية مخصّصة بالسقي والإضاءة.</p></div>
+<div class="feat"><div class="ico">🎁</div><h3>تغليف أنيق</h3><p>تغليف هدايا راقٍ يليق بمناسباتك ومن تحب.</p></div>
+</div></section>
+<footer><div class="foot-inner">
+<div><div class="logo">🌿 نبتـ<span style="color:var(--gold)">ـة</span></div><p>وجهتك الأولى للنباتات المنزلية والديكور الأخضر. نؤمن بأن كل مساحة تستحق لمسة من الطبيعة.</p></div>
+<div><h4 style="margin-bottom:.8rem">تواصل معنا</h4><p>📱 واتساب: 05XXXXXXXX<br>📧 hello@nabta.shop<br>📍 المدينة، الحي</p></div>
+<div><h4 style="margin-bottom:.8rem">أوقات العمل</h4><p>السبت – الخميس: 9ص – 9م<br>الجمعة: 4م – 9م</p></div>
+</div><div class="foot-bottom">© 2026 نبتة — جميع الحقوق محفوظة 🌱</div></footer>
+<div class="modal" id="adminModal"><div class="modal-box"><button class="close-x" onclick="closeAdmin()">✕</button>
+<div id="loginView"><h2>🔐 دخول المدير</h2><div class="login-hint">أدخلي البريد الإلكتروني وكلمة المرور لحساب المدير المسجّل في Firebase.</div><div class="field"><label>البريد الإلكتروني</label><input type="email" id="adminEmail" inputmode="email" autocomplete="username" placeholder="name@example.com"></div><div class="field"><label>كلمة المرور</label><input type="password" id="adminPass" autocomplete="current-password" placeholder="••••••••"></div><button class="save-btn" onclick="doLogin()">دخول</button></div>
+<div id="dashView" style="display:none"><h2>⚙️ لوحة التحكم</h2><div class="tabs"><button class="tab active" onclick="showTab('products',this)">المنتجات</button><button class="tab" onclick="showTab('settings',this)">الإعدادات</button></div>
+<div id="tab-products"><div id="adminList"></div><button class="add-btn" onclick="editProduct(-1)">＋ إضافة نبتة جديدة</button></div>
+<div id="tab-settings" style="display:none"><div class="field"><label>اسم المتجر</label><input id="setName"></div><div class="field"><label>نص الترحيب في الصفحة الرئيسية</label><textarea id="setWelcome" rows="3"></textarea></div><div class="field"><label>رقم الواتساب</label><input id="setPhone"></div><button class="save-btn" onclick="saveSettings()">حفظ الإعدادات</button></div></div>
+<div id="editView" style="display:none"><h2 id="editTitle">✏️ تعديل نبتة</h2><div class="field"><label>الاسم</label><input id="pName"></div><div class="field"><label>الوصف</label><textarea id="pDesc" rows="2"></textarea></div><div class="field"><label>السعر (دج)</label><input id="pPrice" type="number" min="0"></div>
+<div class="field"><label>صورة النبتة</label><input type="file" id="pImgFile" accept="image/*" onchange="uploadImg(this)" style="padding:.5rem;background:#fff"><input id="pImg" placeholder="أو ألصق رابط URL / إيموجي (مثل 🌿)" style="margin-top:.5rem"><div id="imgPreview" style="margin-top:.6rem;display:none"><img id="pvImg" style="width:100%;max-height:140px;object-fit:cover;border-radius:12px;border:2px solid var(--green-300)"></div></div>
+<button class="save-btn" onclick="saveProduct()">💾 حفظ المنتج</button></div>
+</div></div>
+<div class="toast" id="toast"></div>
+<script>
+const DEFAULTS = {
+ settings:{name:"نبتة",welcome:"نختار لك أجمل النباتات المنزلية والمكتبية بعناية فائقة، من أوراقٍ استوائية إلى صبارات أنيقة، مع نصائح عناية مخصّصة لكل نبتة.",phone:"05XXXXXXXX"},
+ products:[
+ {name:"نبتة مونستيرا",desc:"أوراق استوائية كبيرة تضيف فخامة لأي ركن",price:120,img:"🌿"},
+ {name:"صبار برميلي",desc:"سهل العناية ومثالي للمكاتب",price:45,img:"🌵"},
+ {name:"بوتس معلّق",desc:"أوراق قلبية تتدلى بجمال من الرفوف",price:65,img:"🍃"},
+ {name:"نبتة فيكس ليراتا",desc:"أوراقها الكبيرة رمز الأناقة العصرية",price:150,img:"🌱"},
+ {name:"أوركيد أبيض",desc:"زهور راقية تدوم طويلاً بروعة",price:95,img:"🌸"},
+ {name:"نبتة الزنبق",desc:"تنقّي الهواء وتزهر بياضاً ناصعاً",price:80,img:"🤍"},
+ {name:"بامبو الحظ",desc:"رمز التوازن والطاقة الإيجابية",price:55,img:"🎋"},
+ {name:"نخلة أريكا",desc:"لمسة استوائية تملأ المساحات",price:110,img:"🌴"}
+ ]};
+let cachedStore=null;
+try{cachedStore=JSON.parse(localStorage.getItem("nabta")||"null")}catch(e){}
+let store=cachedStore||JSON.parse(JSON.stringify(DEFAULTS));
+let editIdx=-1;
+const save=()=>{try{localStorage.setItem("nabta",JSON.stringify(store))}catch(e){}};
+const leaves=["🍃","🌿","☘️","🍀"];
+for(let i=0;i<14;i++){const l=document.createElement("div");l.className="leaf";l.textContent=leaves[i%4];l.style.left=Math.random()*100+"vw";l.style.fontSize=(1.2+Math.random()*1.8)+"rem";l.style.animationDuration=(12+Math.random()*18)+"s";l.style.animationDelay=(-Math.random()*20)+"s";document.body.appendChild(l)}
+function isImg(u){return /^https?:\/\//.test(u)||u.startsWith("data:image")}
+function render(){
+ document.title=store.settings.name+" | متجر النباتات";document.querySelector(".hero p").textContent=store.settings.welcome;
+ const g=document.getElementById("productsGrid");
+ g.innerHTML=store.products.map((p,i)=>`<div class="card"><div class="card-img">${isImg(p.img)?`<img src="${p.img}" onerror="this.outerHTML='<div style=font-size:5rem>🌿</div>'">`:p.img}</div><div class="card-body"><h3>${p.name}</h3><p class="desc">${p.desc}</p><div class="card-foot"><span class="price">${p.price} <small>دج</small></span><button class="order-btn" onclick="order(${i})">اطلب الآن</button></div></div></div>`).join("");
+}
+function order(i){const p=store.products[i];const phone=store.settings.phone.replace(/\D/g,"");window.open(`https://wa.me/${phone}?text=${encodeURIComponent("مرحباً، أرغب بطلب: "+p.name+" — "+p.price+" دج")}`,"_blank")}
+function openAdmin(e){e&&e.preventDefault();document.getElementById("adminModal").classList.add("open");const auth=!!window.nabtaAuthUser;document.getElementById("loginView").style.display=auth?"none":"block";document.getElementById("dashView").style.display=auth?"block":"none";if(auth)renderAdmin();document.getElementById("editView").style.display="none"}
+function closeAdmin(){document.getElementById("adminModal").classList.remove("open")}
+async function doLogin(){
+ const email=document.getElementById("adminEmail").value.trim();
+ const password=document.getElementById("adminPass").value;
+ if(!email||!password){toast("أدخلي البريد الإلكتروني وكلمة المرور");return}
+ try{
+  if(!window.NabtaFirebase)throw new Error("لم يكتمل الاتصال بFirebase بعد. أعيدي المحاولة بعد لحظة.");
+  const credential=await window.NabtaFirebase.signIn(email,password);
+  if(credential.user.uid!=="Zi3hDypBtGggZPu4nQxea1WINXR2"){await window.NabtaFirebase.signOut();throw new Error("هذا الحساب ليس حساب مدير متجر نبتة")}
+  const data=await window.NabtaFirebase.loadStore();
+  if(data.products===null){store.products=(cachedStore&&Array.isArray(cachedStore.products))?cachedStore.products:JSON.parse(JSON.stringify(DEFAULTS.products));await window.NabtaFirebase.saveProducts(store.products)}else store.products=data.products;
+  if(data.settings===null){store.settings=(cachedStore&&cachedStore.settings)?cachedStore.settings:JSON.parse(JSON.stringify(DEFAULTS.settings));await window.NabtaFirebase.saveSettings(store.settings)}else store.settings=data.settings;
+  save();document.getElementById("loginView").style.display="none";document.getElementById("dashView").style.display="block";render();renderAdmin();toast("✅ تم تسجيل الدخول بنجاح");
+ }catch(err){toast("تعذّر الدخول: "+(err.code==="auth/invalid-credential"||err.code==="auth/wrong-password"?"تحققي من البريد وكلمة المرور":err.message||"حدث خطأ"))}
+}
+function showTab(t,btn){document.querySelectorAll(".tab").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById("tab-products").style.display=t==="products"?"block":"none";document.getElementById("tab-settings").style.display=t==="settings"?"block":"none";document.getElementById("editView").style.display="none";if(t==="settings"){document.getElementById("setName").value=store.settings.name;document.getElementById("setWelcome").value=store.settings.welcome;document.getElementById("setPhone").value=store.settings.phone}}
+function renderAdmin(){document.getElementById("adminList").innerHTML=store.products.map((p,i)=>`<div class="admin-item"><div class="thumb">${isImg(p.img)?`<img src="${p.img}">`:p.img}</div><div class="info"><b>${p.name}</b><span>${p.price} دج</span></div><button class="mini-btn edit" onclick="editProduct(${i})">✏️</button><button class="mini-btn del" onclick="deleteProduct(${i})">🗑️</button></div>`).join("")}
+function editProduct(i){editIdx=i;document.getElementById("tab-products").style.display="none";document.getElementById("tab-settings").style.display="none";document.getElementById("editView").style.display="block";document.getElementById("editTitle").textContent=i===-1?"＋ نبتة جديدة":"✏️ تعديل نبتة";const p=i===-1?{name:"",desc:"",price:"",img:"🌿"}:store.products[i];document.getElementById("pName").value=p.name;document.getElementById("pDesc").value=p.desc;document.getElementById("pPrice").value=p.price;const hasData=p.img.startsWith("data:");document.getElementById("pImg").value=hasData?"(صورة مرفوعة من جهازك)":p.img;document.getElementById("pImg").disabled=hasData;document.getElementById("pImgFile").value="";pendingImg=null;if(hasData){document.getElementById("pvImg").src=p.img;document.getElementById("imgPreview").style.display="block"}else document.getElementById("imgPreview").style.display="none"}
+let pendingImg=null;
+function uploadImg(input){const f=input.files[0];if(!f)return;if(f.size>4*1024*1024){toast("⚠️ الصورة كبيرة جداً");input.value="";return}const r=new FileReader();r.onload=e=>{const img=new Image();img.onload=()=>{const c=document.createElement("canvas");const s=Math.min(1,800/img.width);c.width=img.width*s;c.height=img.height*s;c.getContext("2d").drawImage(img,0,0,c.width,c.height);pendingImg=c.toDataURL("image/jpeg",.82);document.getElementById("pImg").value="(صورة مرفوعة من جهازك)";document.getElementById("pImg").disabled=true;document.getElementById("pvImg").src=pendingImg;document.getElementById("imgPreview").style.display="block"};img.src=e.target.result};r.readAsDataURL(f)}
+async function saveProduct(){let img=document.getElementById("pImg").value.trim()||"🌿";if(pendingImg){img=pendingImg;pendingImg=null}const p={name:document.getElementById("pName").value.trim()||"نبتة بدون اسم",desc:document.getElementById("pDesc").value.trim(),price:Number(document.getElementById("pPrice").value)||0,img};const next=[...store.products];if(editIdx===-1)next.push(p);else next[editIdx]=p;try{await window.NabtaFirebase.saveProducts(next);store.products=next;save();render();renderAdmin();document.getElementById("editView").style.display="none";document.getElementById("tab-products").style.display="block";toast("💾 تم حفظ المنتج")}catch(err){toast("تعذّر الحفظ: "+(err.message||"تحققي من اتصال الإنترنت"))}}
+async function deleteProduct(i){if(confirm("حذف «"+store.products[i].name+"» نهائياً؟")){const next=store.products.filter((_,index)=>index!==i);try{await window.NabtaFirebase.saveProducts(next);store.products=next;save();render();renderAdmin();toast("🗑️ تم الحذف")}catch(err){toast("تعذّر الحذف: "+(err.message||"تحققي من اتصال الإنترنت"))}}}
+async function saveSettings(){const next={name:document.getElementById("setName").value.trim()||"نبتة",welcome:document.getElementById("setWelcome").value.trim(),phone:document.getElementById("setPhone").value.trim()};try{await window.NabtaFirebase.saveSettings(next);store.settings=next;save();render();toast("💾 تم حفظ الإعدادات")}catch(err){toast("تعذّر حفظ الإعدادات: "+(err.message||"تحققي من اتصال الإنترنت"))}}
+function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("open")}
+let tt;function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),2500)}
+document.getElementById("adminModal").addEventListener("click",e=>{if(e.target.id==="adminModal")closeAdmin()});
+render();
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/13.4.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDlXOHZsCKofG6jY9dyWGbHa3exdTKWAc0",
+  authDomain: "nabta-e7a39.firebaseapp.com",
+  databaseURL: "https://nabta-e7a39-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "nabta-e7a39",
+  storageBucket: "nabta-e7a39.firebasestorage.app",
+  messagingSenderId: "896214972798",
+  appId: "1:896214972798:web:1b3e9e0beffdc7d9739b2f"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+window.NabtaFirebase = {
+  signIn: (email, password) => signInWithEmailAndPassword(auth, email, password),
+  signOut: () => signOut(auth),
+  loadStore: async () => {
+    const [productsSnap, settingsSnap] = await Promise.all([
+      get(ref(db, "products")), get(ref(db, "settings"))
+    ]);
+    return {
+      products: productsSnap.exists() ? productsSnap.val() : null,
+      settings: settingsSnap.exists() ? settingsSnap.val() : null
+    };
+  },
+  saveProducts: products => set(ref(db, "products"), products),
+  saveSettings: settings => set(ref(db, "settings"), settings)
+};
+onAuthStateChanged(auth, user => {
+  window.nabtaAuthUser = user;
+  const modal = document.getElementById("adminModal");
+  if (modal && modal.classList.contains("open")) {
+    document.getElementById("loginView").style.display = user ? "none" : "block";
+    document.getElementById("dashView").style.display = user ? "block" : "none";
+    if (user) renderAdmin();
+  }
+});
+try {
+  const data = await window.NabtaFirebase.loadStore();
+  if (data.products !== null) store.products = data.products;
+  if (data.settings !== null) store.settings = data.settings;
+  save(); render();
+} catch (err) {
+  console.error("Firebase read failed:", err);
+  toast("تعذّر تحميل المنتجات من قاعدة البيانات. تحققي من الاتصال.");
+}
+</script>
+</body>
+</html>
